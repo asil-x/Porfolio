@@ -108,13 +108,19 @@ section .title::after {
 
 .navbar .logo a {
   color: #f5f5f5;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 600;
+  font-family: "Open Sans";
+}
+
+.navbar .logo a span {
+  font-size: 35px;
+  font-family: "Alex Brush";
 }
 
 /*  Nav Logo Span Linear-Gradient  */
-.navbar .logo a span {
-  background: linear-gradient(150deg ,#6d83f3, #F5F5F5, #D4AF37);
+.navbar .logo a span{
+  background: #D4AF37;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease;
@@ -344,24 +350,6 @@ section .title::after {
   text-align: justify;
 }
 
-.about .about-content .right a {
-  display: inline-block;
-  background: #1E2756;
-  color: #f5f5f5;
-  font-size: 20px;
-  font-weight: 500;
-  padding: 10px 30px;
-  margin-top: 20px;
-  border-radius: 6px;
-  border: 2px solid #1E2756;
-  transition: all 0.3s ease;
-}
-
-.about .about-content .right a:hover {
-  color: #1E2756;
-  background: none;
-  animation: pulsate 1s ease-in-out;
-}
 
 /*  Skills  */
 .skills {
