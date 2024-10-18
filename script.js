@@ -31,8 +31,6 @@ $(document).ready(function () {
   var typed = new Typed(".typing", {
       strings: [
           "Front-End Developer",
-          "Flutter Developer",
-          "React Native Developer",
           "Full Stack Developer"
       ],
       typeSpeed: 100,
@@ -42,9 +40,7 @@ $(document).ready(function () {
 
   var typed2 = new Typed(".typing-2", {
       strings: [
-          "Front-End Developer",
-          "Flutter Developer",
-          "React Native Developer",
+          "Front-End Developer",,
           "Full Stack Developer"
       ],
       typeSpeed: 100,
@@ -69,29 +65,6 @@ $(document).ready(function () {
 });
 
 
-  // Skills animation
-  $('.skill-per').each(function(){
-      var $this = $(this);
-      var per = $this.attr('per');
-      $this.css("width", per + '%');
-      $({animatedValue: 0}).animate({animatedValue: per},{
-          duration: 1000,
-          step: function(){
-              $this.attr('per', Math.floor(this.animatedValue) + '%');
-          },
-          complete: function(){
-              $this.attr('per', Math.floor(this.animatedValue) + '%');
-          }
-      });
-  });
-
-
-  // AOS Initialization (if you're using AOS for scroll animations)
-  AOS.init({
-      duration: 1000,
-      once: true
-  });
-
   // Project filter functionality
   $('.filter-btn').on('click', function() {
       var category = $(this).attr('data-filter');
@@ -105,6 +78,7 @@ $(document).ready(function () {
           $('.project-item').not('.' + category).hide('1000');
           $('.project-item').filter('.' + category).show('1000');
       }
+
   });
 
   // Navbar links active state on scroll
@@ -121,3 +95,37 @@ $(document).ready(function () {
   
 
 });
+
+$(document).on('click', function(event) {
+    // Check if clicked element is not a menu link or menu button
+    if (!$(event.target).closest('.menu li a, .menu-btn').length) {
+        $(".navbar .menu").removeClass("active");
+        $(".menu-btn i").removeClass("active");
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const emailContact = document.querySelector('.contact-item[data-email]'); 
+    emailContact.addEventListener('click', () => {
+        window.open(`mailto:${emailContact.dataset.email}`);
+    });
+    
+    // Handle floating social menu links
+    const socialLinks = document.querySelectorAll('.floating-social-menu a');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open(link.href, '_blank');
+        });
+    });
+
+    // Handle project links
+    const projectLinks = document.querySelectorAll('.project-info a');
+    projectLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open(link.href, '_blank');
+        });
+    });
+
+ });
