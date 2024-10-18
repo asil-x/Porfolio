@@ -190,6 +190,7 @@ section .title::after {
   filter: brightness(90%);
 }
 
+/*Floating Menu*/
 .floating-social-menu {
   position: fixed;
   right: 30px;
@@ -243,19 +244,30 @@ section .title::after {
 /*  Home  */
 .home {
   display: flex;
-  background: url("https://images.unsplash.com/photo-1516721306533-364eee523197") no-repeat
-    center;
   height: 100vh;
   color: #f5f5f5;
   min-height: 500px;
+  background: url("assets/banner-nam-2.gif") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   font-family: "Open sans", sans-serif;
+  position: relative;
 }
 
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+}
+
+
 .home .max-width {
-  width: 100%;
-  display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .home .max-width .row {
@@ -310,7 +322,6 @@ section .title::after {
   background: radial-gradient(#e1efff, white);
 }
 .about .title::after {
-  content: "Let'me introduce my self";
   text-overflow: ellipsis;
   display: -webkit-inline-box;
   -webkit-line-clamp: 3;
@@ -634,13 +645,23 @@ section .title::after {
   border-radius: 6px;
   border: 2px solid #1E2756;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .contact-item i {
   font-size: 1.2rem;
   margin-right: 10px;
   color: #D4AF37;
+}
+
+.contact-item[data-phone],
+.contact-item[data-email] {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.contact-item[data-phone]:hover,
+.contact-item[data-email]:hover {
+    color: #D4AF37; 
 }
 
 .contact-item:hover {
@@ -692,12 +713,6 @@ footer span a:hover {
 }
 
 /*  Media Query  */
-@keyframes pulsate {
-  0% {
-    box-shadow: 0 0 25px #888e8d, 0 0 50px #1E2756;
-  }
-}
-
 @media (max-width: 1104px) {
   .about .about-content .left img {
     height: 350px;
@@ -776,6 +791,34 @@ footer span a:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .home {
+    background-attachment: scroll;
+  }
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skills .max-width {
+    padding: 0 50px;
+  }
+  .skill-category {
+    flex-basis: 100%;
+  }
+  .skill-tags {
+    justify-content: flex-start;
+  }
+  .timeline {
+    padding-left: 20px;
+  }
+  .timeline-item::before {
+    left: -26px;
+  }
+}
+
 @media (max-width: 690px) {
   .max-width {
     padding: 0 23px;
@@ -789,7 +832,6 @@ footer span a:hover {
   .home .home-content a {
     font-size: 20px;
   }
-
 }
 
 @media (max-width: 500px) {

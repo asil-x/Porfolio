@@ -60,11 +60,11 @@ $(document).ready(function () {
     var target = $(this.getAttribute('href'));
     
     if (target.length) {
-        var scrollTo = target.offset().top - 10;
+        var scrollTo = target.offset().top - 60; // Adjust for navbar height
         
         $('html, body').animate({
             scrollTop: scrollTo
-        }, 100); 
+        }, 100); // Reduced duration for smoother effect
     }
 });
 
@@ -118,4 +118,6 @@ $(document).ready(function () {
           }
       });
   }).scroll();
+  
+
 });
